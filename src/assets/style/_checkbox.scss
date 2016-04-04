@@ -1,0 +1,41 @@
+.checkbox {
+  position: relative;
+  z-index: 1;
+  vertical-align: middle;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 100%;
+  height: $checkbox-label-height;
+  margin: 0;
+  padding-left: 16px;
+  .checkbox__input{
+     &::after{
+        content: '';
+        border: 2px solid rgba(0,0,0,.54);   
+        position: absolute;
+        top: ($checkbox-label-height - $checkbox-button-size) / 2;
+        left: 0;
+        display: inline-block;
+        box-sizing: border-box;
+        width: $checkbox-button-size;
+        height: $checkbox-button-size;
+        border-radius: 10%;
+     }
+     &:checked{
+       &::after{
+          border: 2px solid $checkbox-color;   
+          background: $checkbox-color url("#{$checkbox-image-path}/tick.svg?embed");
+          transition: transform .3s cubic-bezier(0,0,.2,1),width .3s cubic-bezier(0,0,.2,1),height .3s cubic-bezier(0,0,.2,1),opacity .6s cubic-bezier(0,0,.2,1);
+          transition: transform .3s cubic-bezier(0,0,.2,1),width .3s cubic-bezier(0,0,.2,1),height .3s cubic-bezier(0,0,.2,1),opacity .6s cubic-bezier(0,0,.2,1),-webkit-transform .3s cubic-bezier(0,0,.2,1);
+       }
+     }
+  }
+  .checkbox__label{
+      display: inline-block;
+      height: $checkbox-label-height;
+      line-height: $checkbox-label-height;
+      font-size: $checkbox-label-font-size;
+      vertical-align: top;
+  }
+}
+

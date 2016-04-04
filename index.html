@@ -29,9 +29,27 @@
     <meta name="x5-page-mode" content="app">
     <!-- windows phone 点击无高光 -->
     <meta name="msapplication-tap-highlight" content="no">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 </head>
 <body>
 <router-view></router-view>
 <script type="text/javascript" src="static/build.js"></script>
+<script type="text/javascript">
+    var textList  = document.querySelectorAll(".textfield__input");
+    for(var i=0,len = textList.length;i<len;i++) {
+        textList[i].addEventListener('blur', function(){
+            if(this.value) {
+                this.classList.add("no-empty")
+            } else {
+                if(this.type =='number'){
+                    this.classList.add("no-empty");
+                }else{
+                    this.classList.remove('no-empty');
+                }
+            }
+        })
+    }
+</script>
 </body>
 </html> 

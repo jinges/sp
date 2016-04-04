@@ -1,4 +1,4 @@
-var webpack = require('webpack')
+var webpack = require('webpack');
 
 module.exports = {
   entry: './src/main.js',
@@ -24,7 +24,16 @@ module.exports = {
       },
       {
         test: /\.scss$/,
+        exclude: /node_modules\//,
         loader: 'style!css!sass?sourceMap'
+      },
+      {
+        test: /\.woff(2)$/, 
+        loader: "file?limit=10000&minetype=application/font-woff"
+      },
+      {
+        test: /\.(png|jpg|jpeg|webP|gif|svg)$/,
+        loader: 'url'
       }
     ]
   },
