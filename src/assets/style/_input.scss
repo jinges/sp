@@ -20,6 +20,7 @@
   background: none;
   text-align: left;
   color: inherit;
+  background-color: rgba(255,255,255,.8);
 
   &[type="number"] {
     -moz-appearance: textfield;
@@ -45,7 +46,7 @@
     	}
   	}
   }
-  &.no-empty{
+  &.no_empty{
     @extend :focus;
     & + label{
       color: $input-text-label-color;
@@ -61,7 +62,7 @@
     & + label{
       color: $input-text-error-color;
       &::after{
-        bottom: $input-text-error-color;
+        background-color: $input-text-error-color;
       }
     }
   }
