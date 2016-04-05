@@ -1,12 +1,20 @@
 <template>
-	<label class="checkbox">
-	  <input type="checkbox" class="checkbox__input" 
-			v-model="checked" 
-			:value = "value"
-			@click="checkMe($event)"
-			/>
-	  <span class="checkbox__label">{{label}}</span>
-	</label>
+<!-- <checkbox 
+	:checked="true" 
+	:value="1" 
+	label="金融"></checkbox>
+<checkbox 
+	:checked="false" 
+	:value="2" 
+	label="地产"></checkbox> -->
+<label class="checkbox" v-touch:tap="checkMe($event)">
+<input type="checkbox" class="checkbox__input" 
+	v-model="checked" 
+	:true-value="true"
+	:false-value="false"
+	/>
+<span class="checkbox__label">{{label}}</span>
+</label>
 </template>
 <script type="text/javascript">
 	export default{
@@ -17,13 +25,12 @@
 		},
 		methods:{
 			checkMe(e){
-				var dom = e.target;
 				var result = {
-					'id': dom.value,
-					'checked': dom.checked
+					'id': this.value,
+					'checked': !this.checked
 				};
 
-				this.$dispatch('result', result);
+				this.$dispatch('chekcBoxResult', result);
 			}
 		}
 	}

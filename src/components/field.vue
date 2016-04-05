@@ -1,20 +1,25 @@
 <template>
 <div class="textfield">
-	<input type="{{params.type}}"  v-model="fieldtext" :class="{error: error, no_empty: no_empty}" class="textfield__input" debounce="500" />
-	<label class="textfield__label">{{params.label}}</label>
-	<input type="hidden" v-model="type" value="{{params.model}}" />
-	<input type="hidden" v-model="reg" value="{{params.reg}}" />
+	<input type="{{type}}"  class="textfield__input" debounce="500" 
+		v-model="fieldtext" 
+		:value="value" 
+		:class="{error: error, no_empty: no_empty}" />
+	<label class="textfield__label">{{label}}</label>
 </div>
 </template>
 <script type="text/javascript">
 	export default{
 		props: {
-			params: Object
+			type: String,
+			label: String,
+			model: String,
+			reg: String,
+			value: String 
 		},
 		data(){
 			return {
 				error: false,
-				no_empty: false
+				no_empty: this.value.length 
 			}
 		},
 		watch:{
@@ -31,7 +36,7 @@
 				this.error = false;
 				this.no_empty = true;
 				var result = {
-					name: this.type,
+					name: this.model,
 					value: val
 				};
 				this.$dispatch('result', result);

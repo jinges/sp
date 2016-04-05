@@ -16,8 +16,8 @@
 <template>
 <section class="login">
 	<form>
-		<field :params.sync="fieldUser"></field>
-		<field :params.sync="fieldPassword"></field>
+		<field :params="fieldUser"></field>
+		<field :params="fieldPassword"></field>
 		<div>
 			<button type="submit" class="button" :disabled="disabled" v-touch:tap="login">登录</button>
 		</div>
