@@ -21,6 +21,8 @@
   text-align: left;
   color: inherit;
   background-color: rgba(255,255,255,.8);
+  webkit-appearance: caret;
+  -moz-appearance: caret; /* mobile firefox too! */
 
   &[type="number"] {
     -moz-appearance: textfield;
@@ -40,6 +42,7 @@
 	    top: $input-text-vertical-spacing - ($input-text-floating-label-fontsize + $input-text-padding);
 	    visibility: visible;
   		&::after{
+        content: '';
   			left: 0;
     		visibility: visible;
     		width: 100%;
@@ -91,6 +94,7 @@
   }
 
   &:after {
+        content: '';
     background-color: $input-text-highlight-color;
     bottom: $input-text-vertical-spacing;
     content: '';
@@ -100,9 +104,5 @@
     @include material-animation-default();
     visibility: hidden;
     width: 10px;
-  }
-
-  .textfield.is-invalid &:after {
-    background-color: $input-text-error-color;
   }
 }

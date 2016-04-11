@@ -28,7 +28,7 @@ module.exports = {
         loader: 'style!css!sass?sourceMap'
       },
       {
-        test: /\.woff(2)$/, 
+        test: /\.(woff|woff(2)|eot|ttf)$/, 
         loader: "file?limit=10000&minetype=application/font-woff"
       },
       {

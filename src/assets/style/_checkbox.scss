@@ -2,28 +2,29 @@
   position: relative;
   z-index: 1;
   vertical-align: middle;
-  display: inline-block;
+  display: block;
   box-sizing: border-box;
   width: 100%;
-  height: $checkbox-label-height;
+  height: px2rem($checkbox-label-height);
   margin: 0;
-  padding-left: 16px;
+  padding: 0 0 0 px2rem($checkbox-padding);
   .checkbox__input{
      &::after{
         content: '';
-        border: 2px solid rgba(0,0,0,.54);   
+        border: px2rem(2px) solid rgba(0,0,0,.54);   
         position: absolute;
-        top: ($checkbox-label-height - $checkbox-button-size) / 2;
-        left: 0;
+        top: px2rem(($checkbox-label-height - $checkbox-button-size) / 2);
+        left: px2rem($checkbox-padding);
         display: inline-block;
         box-sizing: border-box;
-        width: $checkbox-button-size;
-        height: $checkbox-button-size;
+        width: px2rem($checkbox-button-size);
+        height: px2rem($checkbox-button-size);
         border-radius: 10%;
      }
      &:checked{
+       background-color: rgba(0,0,0,0);
        &::after{
-          border: 2px solid $checkbox-color;   
+          border: px2rem(2px) solid $checkbox-color;   
           background: $checkbox-color url("#{$checkbox-image-path}/tick.svg?embed");
           transition: transform .3s cubic-bezier(0,0,.2,1),width .3s cubic-bezier(0,0,.2,1),height .3s cubic-bezier(0,0,.2,1),opacity .6s cubic-bezier(0,0,.2,1);
           transition: transform .3s cubic-bezier(0,0,.2,1),width .3s cubic-bezier(0,0,.2,1),height .3s cubic-bezier(0,0,.2,1),opacity .6s cubic-bezier(0,0,.2,1),-webkit-transform .3s cubic-bezier(0,0,.2,1);
@@ -32,9 +33,10 @@
   }
   .checkbox__label{
       display: inline-block;
-      height: $checkbox-label-height;
-      line-height: $checkbox-label-height;
-      font-size: $checkbox-label-font-size;
+      height: px2rem($checkbox-label-height);
+      line-height: px2rem($checkbox-label-height);
+      font-size: px2rem($checkbox-label-font-size);
+      padding-left: px2rem($checkbox-padding);
       vertical-align: top;
   }
 }

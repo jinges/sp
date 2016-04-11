@@ -16,8 +16,18 @@
 <template>
 <section class="login">
 	<form>
-		<field :params="fieldUser"></field>
-		<field :params="fieldPassword"></field>
+		<field 
+			type="number" 
+			label="手机号"
+			model="username" 
+			reg="/^1[3|5|7|8]\d{9}$/"
+			value=""></field>
+		<field 
+			type="password" 
+			label="密码"
+			model="password" 
+			reg="/\w{6,}/"
+			value=""></field>
 		<div>
 			<button type="submit" class="button" :disabled="disabled" v-touch:tap="login">登录</button>
 		</div>
@@ -33,18 +43,6 @@
 		},
 		data(){
 			return{
-				fieldUser: {
-					type: 'number',
-					label: '手机号码',
-					model: 'username',
-					reg: /^1[3|5|7|8]\d{9}$/ 
-				},
-				fieldPassword: {
-					type: 'password',
-					label: '密码',
-					model: 'password',
-					reg: /\w{6,}/
-				},
 				disabled: true,
 				userObj: {}
 			}
@@ -56,14 +54,14 @@
 		},
 		methods:{
 			login(){ 
-				if(!this.userObj.username) {
+				if(!this.userObj.username || !this.userObj.password) {
 					return false;
 				}
 				console.log(this.userObj);
 			}
 		},
 		events:{
-			result(obj){
+			fieldResult(obj){
 				this.userObj[obj.name] = obj.value;
 			}
 		}

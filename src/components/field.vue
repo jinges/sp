@@ -39,7 +39,7 @@
 					name: this.model,
 					value: val
 				};
-				this.$dispatch('result', result);
+				this.$dispatch('fieldResult', result);
 			}
 		}
 	}
