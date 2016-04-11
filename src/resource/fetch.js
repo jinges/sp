@@ -1,10 +1,13 @@
+import Vue from 'Vue'
+console.log(Vue);
 
-export.model = function (url, data, option, method) {
-    method = method || "get";
-    return Vue.http[method](url, data, option).then(function (response) {
-        return response.data
-    }, function (response) {
-        console.log(response)
-        return response
-    });
+export default function(url, data, method) {
+	Vue.$http({
+		url: url,
+		data: data,
+		method: method
+	}).then(
+		(result) => result,
+		(result) => result 
+	)
 }

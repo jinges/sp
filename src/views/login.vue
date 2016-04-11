@@ -36,6 +36,7 @@
 </template>
 <script type="text/javascript">
 	import Field from '../components/field.vue'
+	import $resource from '../resource/index'
 
 	export default {
 		components: {
@@ -57,6 +58,8 @@
 				if(!this.userObj.username || !this.userObj.password) {
 					return false;
 				}
+console.log($resource);
+				$resource.login(this.userObj);
 				console.log(this.userObj);
 			}
 		},
