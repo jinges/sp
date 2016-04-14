@@ -20,6 +20,12 @@ $orderColor: rgba(233, 233, 233, 1);
 		line-height:96px;
 		color: $orderColor;
 	}
+
+	.button{
+		margin: 30px 0 0;
+		color: #fff;
+		background-color: rgba(56, 71, 78, 1);
+	}
 }
 .total{
 	background-color:#fff;
@@ -43,12 +49,6 @@ $orderColor: rgba(233, 233, 233, 1);
 		display: inline-block;
 		text-align: right;
 	}
-}
-
-.button{
-	margin: 30px 0 0;
-	color: #fff;
-	background-color: rgba(56, 71, 78, 1);
 }
 </style>
 <template>

@@ -1,15 +1,14 @@
 .button {
-  background: transparent;
   border: none;
   border-radius: $button-border-radius;
-  color: $button-secondary-color;
+  color: #fff;
   position: relative;
   height: $button-height;
   margin: 0;
   min-width: $button-min-width;
   width: 100%;
   padding: 0 $button-padding;
-  display: inline-block;
+  display: block;
   @include typo-button();
   overflow: hidden;
   will-change: box-shadow;
@@ -22,18 +21,11 @@
   text-align: center;
   line-height: $button-height;
   vertical-align: middle;
+  -webkit-user-select:none; 
   background-color: $button-primary-color;
 
   &::-moz-focus-inner {
     border: 0;
-  }
-
-  &:hover {
-    background-color: $button-hover-color;
-  }
-
-  &:focus:not(:active) {
-    background-color: $button-focus-color;
   }
 
   &:active {

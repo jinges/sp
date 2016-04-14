@@ -12,7 +12,6 @@
 		props: {
 			type: String,
 			label: String,
-			model: String,
 			reg: String,
 			value: String 
 		},
@@ -35,11 +34,8 @@
 				}
 				this.error = false;
 				this.no_empty = true;
-				var result = {
-					name: this.model,
-					value: val
-				};
-				this.$dispatch('fieldResult', result);
+				
+				this.value = val;
 			}
 		}
 	}

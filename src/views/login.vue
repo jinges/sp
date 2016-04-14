@@ -58,9 +58,9 @@
 				if(!this.userObj.username || !this.userObj.password) {
 					return false;
 				}
-console.log($resource);
+
 				$resource.login(this.userObj);
-				console.log(this.userObj);
+				
 			}
 		},
 		events:{
