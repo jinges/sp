@@ -1,14 +1,25 @@
 <style lang="sass">
-	form{
-		width: 280px;
-		margin: 40px auto 0;
-		padding: 40px;
-		background: #fff;
-	}
+
 </style>
 <template>
 	<form>
 		<captcha :username.sync='obj.username' :captcha.sync='obj.captcha'></captcha>
+		<div class="form-group">
+			<field 
+				type="password" 
+				label="密码"
+				reg="/^\w{6,16}$/"
+				error="6~16位数字、字母"
+				:value.sync="password"></field>
+		</div>
+		<div class="form-group">
+			<field 
+				type="password" 
+				label="确认密码"
+				:reg="regPassWord"
+				error="密码不一致"
+				:value.sync="obj.repassword"></field>
+		</div>
 		<div class="form-group grid">
 			<div class="cell--2-col">
 				<radio 
@@ -23,8 +34,8 @@
 				label="女"></radio>
 			</div>
 		</div>
-		<div class="form-group">
-			<button class="button" v-touch:tap="regist">注册</button>
+		<div class="form-group button-gruop">
+			<a class="button" v-touch:tap="regist">注册</a>
 		</div>
 	</form>
 </template>
@@ -32,6 +43,7 @@
 	import Radio from '../components/radio.vue'
 	import Field from '../components/field.vue'
 	import Captcha from '../components/captcha.vue'
+	import Action from '../actions/index'
 
 	export default {
 		components:{
@@ -43,8 +55,12 @@
 			return {
 				obj: {
 					username: '',
-					captcha: ''
-				}
+					captcha: '',
+					password: '',
+					repassword: ''
+				},
+				password: '',
+				regPassWord: ''
 			}
 		},
 		route: {
@@ -54,7 +70,14 @@
 		},
 		methods:{
 			regist(){
-				alert(this.username);
+				console.log(this.obj);
+			}
+		},
+		watch:{
+			password(newVal, oldVal){
+				if(newVal != oldVal) {
+					this.regPassWord = '/^'+ newVal +'$/';
+				}
 			}
 		}
 	}

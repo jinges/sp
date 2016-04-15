@@ -3,8 +3,9 @@
 	<input type="{{type}}"  class="textfield__input" debounce="500" 
 		v-model="fieldtext" 
 		:value="value" 
-		:class="{error: error, no_empty: no_empty}" />
+		:class="{error: isError, no_empty: no_empty}" />
 	<label class="textfield__label">{{label}}</label>
+	<span class="error__text">{{error}}</span>
 </div>
 </template>
 <script type="text/javascript">
@@ -13,11 +14,12 @@
 			type: String,
 			label: String,
 			reg: String,
+			error: String,
 			value: String 
 		},
 		data(){
 			return {
-				error: false,
+				isError: false,
 				no_empty: this.value.length 
 			}
 		},
@@ -28,11 +30,11 @@
 					return false;
 				}
 				else if(!reg.test(val)) {
-					this.error = true;
+					this.isError = true;
 					this.no_empty = false;
 					return false;
 				}
-				this.error = false;
+				this.isError = false;
 				this.no_empty = true;
 				
 				this.value = val;

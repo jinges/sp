@@ -3,7 +3,6 @@
   font-size: $input-text-font-size;
   display: block;
   box-sizing: border-box;
-  width: 300px;
   max-width: 100%;
   margin: 0;
   padding: $input-text-vertical-spacing 0;
@@ -32,6 +31,14 @@
   &[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+  }
+
+  & ~ .error__text{
+    color: $input-text-error-color;
+    position: absolute;
+    font-size : $input-text-floating-label-fontsize;
+    padding-top: 4px;
+    display: none;
   }
 
   &:focus{
@@ -68,6 +75,9 @@
         background-color: $input-text-error-color;
       }
     }
+    & ~ .error__text{
+      display: block;
+    }
   }
 }
 
@@ -94,7 +104,7 @@
   }
 
   &:after {
-        content: '';
+    content: '';
     background-color: $input-text-highlight-color;
     bottom: $input-text-vertical-spacing;
     content: '';

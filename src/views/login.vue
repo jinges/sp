@@ -6,12 +6,6 @@
 		background: url('../assets/images/header.jpg');
 		background-size: cover;
 	}
-	form{
-		width: 280px;
-		margin: 40px auto 0;
-		padding: 40px;
-		background: #fff;
-	}
 </style>
 <template>
 <section class="login">
@@ -21,13 +15,15 @@
 			label="手机号"
 			model="username" 
 			reg="/^1[3|5|7|8]\d{9}$/"
-			value=""></field>
+			error="手机号码错误"
+			:value.async="obj.username"></field>
 		<field 
 			type="password" 
 			label="密码"
 			model="password" 
 			reg="/\w{6,}/"
-			value=""></field>
+			error="密码格式错误"
+			:value.async="obj.password"></field>
 		<div>
 			<button type="submit" class="button" :disabled="disabled" v-touch:tap="login">登录</button>
 		</div>
@@ -36,7 +32,7 @@
 </template>
 <script type="text/javascript">
 	import Field from '../components/field.vue'
-	import $resource from '../resource/index'
+	import Action from '../actions/index'
 
 	export default {
 		components: {
@@ -45,7 +41,10 @@
 		data(){
 			return{
 				disabled: true,
-				userObj: {}
+				obj: {
+					username:'',
+					password: ''
+				}
 			}
 		},
 		route: {
@@ -55,17 +54,12 @@
 		},
 		methods:{
 			login(){ 
-				if(!this.userObj.username || !this.userObj.password) {
+				if(!this.obj.username || !this.obj.password) {
 					return false;
 				}
 
-				$resource.login(this.userObj);
+				Action.login(this.obj);
 				
-			}
-		},
-		events:{
-			fieldResult(obj){
-				this.userObj[obj.name] = obj.value;
 			}
 		}
 	}

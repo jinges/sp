@@ -105,3 +105,15 @@
 	          -webkit-transform .3s cubic-bezier(0,0,.2,1);
 	}
 }
+form{
+	width: px2rem(480px);
+	margin: px2rem(40px) auto 0;
+	padding: px2rem(40px);
+	background: #fff;
+	.grid{
+		padding:0;
+	}
+	.button-gruop{
+		padding-top:1rem;
+	}
+}
