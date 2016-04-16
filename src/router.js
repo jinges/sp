@@ -35,6 +35,14 @@ module.exports = function (router){
 		'/regist': {
 			title: '注册',
 			component: require('./views/regist.vue')
+		},
+		'/authenticate': {
+			title: '获取验证码',
+			component: require('./views/authenticate.vue')
+		},
+		'/password': {
+			title: '修改密码',
+			component: require('./views/password.vue')
 		}
 	})
 }

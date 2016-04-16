@@ -16,14 +16,14 @@
 			model="username" 
 			reg="/^1[3|5|7|8]\d{9}$/"
 			error="手机号码错误"
-			:value.async="obj.username"></field>
+			:value.sync="username"></field>
 		<field 
 			type="password" 
 			label="密码"
 			model="password" 
 			reg="/\w{6,}/"
 			error="密码格式错误"
-			:value.async="obj.password"></field>
+			:value.sync="password"></field>
 		<div>
 			<button type="submit" class="button" :disabled="disabled" v-touch:tap="login">登录</button>
 		</div>
@@ -32,7 +32,7 @@
 </template>
 <script type="text/javascript">
 	import Field from '../components/field.vue'
-	import Action from '../actions/index'
+	import fetch from '../fetch/index'
 
 	export default {
 		components: {
@@ -40,11 +40,9 @@
 		},
 		data(){
 			return{
-				disabled: true,
-				obj: {
-					username:'',
-					password: ''
-				}
+				disabled: true,	
+				username:'',
+				password: ''
 			}
 		},
 		route: {
@@ -54,11 +52,22 @@
 		},
 		methods:{
 			login(){ 
-				if(!this.obj.username || !this.obj.password) {
+				if(!this.username || !this.password) {
 					return false;
 				}
 
-				Action.login(this.obj);
+				fetch.login({
+					username: this.username,
+					password: this.password
+				}).
+				then(
+					(res) => {
+
+					},
+					(res) => {
+
+					}
+				);
 				
 			}
 		}

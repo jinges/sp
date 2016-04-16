@@ -1,11 +1,15 @@
 <template>
-	<div class="form-group">
+	<div class="form-group" v-if="login">
 		<field 
 		type="number" 
 		label="手机号"
 		reg="/^1[3|5|7|8]\d{9}$/"
 		error="手机号码不正确"
+		:isnull='isnull'
 		:value.sync="phone"></field>
+	</div>
+	<div class="form-group" v-else>
+		<p class="bind-phone">您绑定的号码为<em>{{bindPhone}}</em></p>
 	</div>
 	<div class="form-group grid">
 		<div class="cell--2-col">
@@ -23,6 +27,7 @@
 </template>
 <script type="text/javascript">
 	import Field from './field.vue'
+	import fetch from '../fetch/index'
 	
 	export default {
 		components:{
@@ -30,14 +35,17 @@
 		},
 		props:{
 			username: String,
-			captcha: String
+			captcha: String,
+			isnull: false
 		},
 		data(){
 			return {
 				buttonText: '获取验证码', 
 				phone: '',
 				code: '',
-				isGetCode: false
+				isGetCode: false,
+				bindPhone: '',
+				login: this.username != null
 			}
 		},
 		watch:{
@@ -55,11 +63,12 @@
 		methods:{
 			getCode(){
 				var sec = 60;
-				if(!this.phone || this.isGetCode) {
+				if(!this.phone) {
+					this.isnull = true;
 					return false;
 				}
 
-				var current = setInterval(()=>{
+				var current = setInterval(() => {
 					this.buttonText = --sec+'s';
 					if(sec == 0) {
 						clearInterval(current);
@@ -69,6 +78,18 @@
 				}, 1000);
 				this.isGetCode = true;
 				console.log(this.phone);
+				fetch.getcode({
+					phone: this.username
+				});
+			}
+		},
+		compiled(){
+			// this.phone = '18665877630';
+			// this.bindPhone = '186****30';
+		},
+		route:{
+			data(){
+				this.bindPhone = '18665877630';
 			}
 		}
 	}

@@ -59,7 +59,7 @@
   &.no_empty{
     @extend :focus;
     & + label{
-      color: $input-text-label-color;
+      color: $input-text-highlight-color;
       &::after{
         left: 45%;
         width: 0;

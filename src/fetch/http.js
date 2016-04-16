@@ -1,10 +1,9 @@
-import Vue from 'Vue'
+let Vue = require('Vue');
 
 export default function(url, data, method) {
-	Vue.$http({
+	Vue.http[method]({
 		url: url,
-		data: data,
-		method: method
+		data: data
 	}).then(
 		(result) => result,
 		(result) => result 

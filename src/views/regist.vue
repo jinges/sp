@@ -3,13 +3,14 @@
 </style>
 <template>
 	<form>
-		<captcha :username.sync='obj.username' :captcha.sync='obj.captcha'></captcha>
+		<captcha :username.sync='username' :isnull='isnull' :captcha.sync='captcha'></captcha>
 		<div class="form-group">
 			<field 
 				type="password" 
 				label="密码"
 				reg="/^\w{6,16}$/"
 				error="6~16位数字、字母"
+				:isnull = 'isnull'
 				:value.sync="password"></field>
 		</div>
 		<div class="form-group">
@@ -18,7 +19,8 @@
 				label="确认密码"
 				:reg="regPassWord"
 				error="密码不一致"
-				:value.sync="obj.repassword"></field>
+				:isnull = 'isnull'
+				:value.sync="repassword"></field>
 		</div>
 		<div class="form-group grid">
 			<div class="cell--2-col">
@@ -43,7 +45,7 @@
 	import Radio from '../components/radio.vue'
 	import Field from '../components/field.vue'
 	import Captcha from '../components/captcha.vue'
-	import Action from '../actions/index'
+	import fetch from '../fetch/index'
 
 	export default {
 		components:{
@@ -53,14 +55,12 @@
 		},
 		data(){
 			return {
-				obj: {
-					username: '',
-					captcha: '',
-					password: '',
-					repassword: ''
-				},
+				username: '',
+				captcha: '',
 				password: '',
-				regPassWord: ''
+				repassword: '',
+				regPassWord: '',
+				isnull: false
 			}
 		},
 		route: {
@@ -70,7 +70,16 @@
 		},
 		methods:{
 			regist(){
-				console.log(this.obj);
+				if(!this.username || !this.captcha || !this.password || !this.repassword) {
+					this.isnull = true;
+					return false;
+				}
+
+				fetch.regist({
+					username: this.username,
+					password: this.password,
+					captcha: this.captcha
+				})
 			}
 		},
 		watch:{
