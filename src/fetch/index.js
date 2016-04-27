@@ -1,10 +1,10 @@
 import $http from './http'
 
-let HTTP = '//127.0.0.1:80/'
+let HTTP = '//127.0.0.1:3000/api/'
 
 // (url, data, method, options)
 export default {
-	getcode  : (data) => $http(HTTP+'getCode', data, 'post'),
+	captcha  : (data) => $http(HTTP+'captcha', data, 'post'),
 	regist   : (data) => $http(HTTP+'regist', data, 'post'),
 	login    : (data) => $http(HTTP+'login', data, 'post'),
 	loginout : (data) => $http(HTTP+'loginout', data, 'get'),

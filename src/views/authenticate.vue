@@ -1,8 +1,8 @@
 <template>
 	<form >
-		<captcha :username.sync='username' :captcha.sync='captcha'></captcha>
+		<captcha :username.sync='username' :isnull.sync="isnull" :captcha.sync='captcha'></captcha>
 		<div class="form-group">
-			<button class="button" v-touch:tap="validation">下一步</button>
+			<span class="button" v-touch:tap="validation">下一步</span>
 		</div>
 	</form>
 </template>
@@ -17,12 +17,14 @@
 		data(){
 			return {
 				username: '',
-				captcha: ''
+				captcha: '',
+				isnull: false
 			}
 		},
 		methods:{
 			validation(){
 				if(!this.username && !this.captcha) {
+					this.isnull = true;
 					return false;
 				}
 

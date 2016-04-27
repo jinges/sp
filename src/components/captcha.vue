@@ -18,6 +18,7 @@
 			label="验证码"
 			reg="/^\d{6}$/"
 			error="验证码错误"
+			:isnull="isnull && codeNull"
 			:value.sync="code"></field>
 		</div>
 		<div class="cell--2-col getcode">
@@ -36,7 +37,7 @@
 		props:{
 			username: String,
 			captcha: String,
-			isnull: false
+			isnull: Boolean
 		},
 		data(){
 			return {
@@ -45,6 +46,7 @@
 				code: '',
 				isGetCode: false,
 				bindPhone: '',
+				codeNull: true,
 				login: this.username != null
 			}
 		},
@@ -65,6 +67,7 @@
 				var sec = 60;
 				if(!this.phone) {
 					this.isnull = true;
+					this.codeNull = false;
 					return false;
 				}
 
@@ -77,10 +80,11 @@
 					}
 				}, 1000);
 				this.isGetCode = true;
-				console.log(this.phone);
-				fetch.getcode({
+
+				var res = fetch.captcha({
 					phone: this.username
 				});
+				console.log(res);
 			}
 		},
 		compiled(){

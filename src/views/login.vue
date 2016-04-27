@@ -16,6 +16,7 @@
 			model="username" 
 			reg="/^1[3|5|7|8]\d{9}$/"
 			error="手机号码错误"
+			:isnull = 'isnull'
 			:value.sync="username"></field>
 		<field 
 			type="password" 
@@ -23,9 +24,10 @@
 			model="password" 
 			reg="/\w{6,}/"
 			error="密码格式错误"
+			:isnull = 'isnull'
 			:value.sync="password"></field>
 		<div>
-			<button type="submit" class="button" :disabled="disabled" v-touch:tap="login">登录</button>
+			<span type="submit" class="button" :disabled="disabled" v-touch:tap="login">登录</span>
 		</div>
 	</form>
 </section>

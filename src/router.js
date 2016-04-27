@@ -37,7 +37,7 @@ module.exports = function (router){
 			component: require('./views/regist.vue')
 		},
 		'/authenticate': {
-			title: '获取验证码',
+			title: '验证身份',
 			component: require('./views/authenticate.vue')
 		},
 		'/password': {

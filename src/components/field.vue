@@ -1,6 +1,7 @@
 <template>
 <div class="textfield">
-	<input type="{{type}}"  class="textfield__input" debounce="500" 
+	<input type="{{type}}"  class="textfield__input" 
+		debounce="500" 
 		v-model="fieldtext" 
 		:value="value" 
 		:class="{error: isError, no_empty: no_empty}" />
@@ -22,6 +23,7 @@
 			return {
 				isError: false,
 				errorText: '',
+				fieldtext: 'fieldtext',
 				no_empty: this.value.length 
 			}
 		},
