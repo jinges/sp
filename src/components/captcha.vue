@@ -25,19 +25,23 @@
 			<span class="button" v-touch:tap="getCode">{{buttonText}}</span>
 		</div>
 	</div>
+	<toast :text="toastContent" :toastshow.sync="toastShow"></toast>
 </template>
 <script type="text/javascript">
 	import Field from './field.vue'
+	import Toast from './toast.vue'
 	import fetch from '../fetch/index'
 	
 	export default {
 		components:{
-			Field
+			Field,
+			Toast
 		},
 		props:{
 			username: String,
 			captcha: String,
-			isnull: Boolean
+			isnull: Boolean,
+			purpose: String
 		},
 		data(){
 			return {
@@ -47,6 +51,8 @@
 				isGetCode: false,
 				bindPhone: '',
 				codeNull: true,
+				toastShow: false,
+				toastContent: '',
 				login: this.username != null
 			}
 		},
@@ -65,6 +71,10 @@
 		methods:{
 			getCode(){
 				var sec = 60;
+				if(this.isGetCode) {
+					return false;
+				}
+
 				if(!this.phone) {
 					this.isnull = true;
 					this.codeNull = false;
@@ -81,10 +91,14 @@
 				}, 1000);
 				this.isGetCode = true;
 
-				var res = fetch.captcha({
-					phone: this.username
+				fetch.captcha({
+					phone: this.username,
+					purpose: this.purpose
+				}).then(result => {
+					this.toastContent = result.data;
+					this.toastShow = true;
 				});
-				console.log(res);
+				
 			}
 		},
 		compiled(){

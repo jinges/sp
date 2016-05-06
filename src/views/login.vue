@@ -10,23 +10,27 @@
 <template>
 <section class="login">
 	<form>
-		<field 
-			type="number" 
-			label="手机号"
-			model="username" 
-			reg="/^1[3|5|7|8]\d{9}$/"
-			error="手机号码错误"
-			:isnull = 'isnull'
-			:value.sync="username"></field>
-		<field 
-			type="password" 
-			label="密码"
-			model="password" 
-			reg="/\w{6,}/"
-			error="密码格式错误"
-			:isnull = 'isnull'
-			:value.sync="password"></field>
-		<div>
+		<div class="form-group">
+			<field 
+				type="number" 
+				label="手机号"
+				model="username" 
+				reg="/^1[3|5|7|8]\d{9}$/"
+				error="手机号码错误"
+				:isnull = 'isnull'
+				:value.sync="username"></field>
+		</div>
+		<div class="form-group">
+			<field 
+				type="password" 
+				label="密码"
+				model="password" 
+				reg="/\w{6,}/"
+				error="密码格式错误"
+				:isnull = 'isnull'
+				:value.sync="password"></field>
+		</div>
+		<div class="form-group button-gruop">
 			<span type="submit" class="button" :disabled="disabled" v-touch:tap="login">登录</span>
 		</div>
 	</form>
@@ -44,7 +48,8 @@
 			return{
 				disabled: true,	
 				username:'',
-				password: ''
+				password: '',
+				isnull: false
 			}
 		},
 		route: {
@@ -55,6 +60,7 @@
 		methods:{
 			login(){ 
 				if(!this.username || !this.password) {
+					this.isnull = true;
 					return false;
 				}
 

@@ -1,8 +1,10 @@
 let Vue = require('Vue');
 
 export default function(url, data, method) {
-	Vue.http[method](url, data, {"emulateJSON": true}).then(
-		result => result,
-		result => result 
+	Vue.http.options.emulateJSON = true;
+	return Vue.http[method](url, data).then(
+		result => result
+	).catch(
+		err => err
 	)
 }

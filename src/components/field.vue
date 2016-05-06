@@ -34,7 +34,7 @@
 					this.isError = true;
 					this.no_empty = false;
 				}
-			},
+			}, 
 			fieldtext(val){
 				var reg = eval(this.reg);
 				if(!val){

@@ -122,3 +122,21 @@ form{
 	text-align: center;
 	padding: px2rem(40px) 0;
 }
+.toast{
+	position: absolute;
+	bottom: px2rem(160px);
+	color: #fff;
+	text-align: center;
+	font-size: px2rem(18px);
+	width: 80%;
+	left: 50%;
+	margin: 0 0 0 -40%; 
+	.toast-wrapper{
+		padding: px2rem(20px) px2rem(40px);
+		background-color: rgba(0, 0, 0, .6);
+		text-align: left;
+		display: inline-block;
+		margin: auto;
+		border-radius: px2rem(10px);
+	}
+}

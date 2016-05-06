@@ -3,7 +3,7 @@
 </style>
 <template>
 	<form>
-		<captcha :username.sync='username' :isnull='isnull' :captcha.sync='captcha'></captcha>
+		<captcha :username.sync='username' :isnull='isnull' :purpose='purpose' :captcha.sync='captcha'></captcha>
 		<div class="form-group">
 			<field 
 				type="password" 
@@ -60,6 +60,8 @@
 				password: '',
 				repassword: '',
 				regPassWord: '',
+				purpose: 'regist',
+				sex: 1,
 				isnull: false
 			}
 		},
@@ -78,7 +80,10 @@
 				fetch.regist({
 					username: this.username,
 					password: this.password,
-					captcha: this.captcha
+					captcha: this.captcha,
+					sex: this.sex
+				}).then(result=>{
+					console.log(result);
 				})
 			}
 		},
@@ -87,6 +92,14 @@
 				if(newVal != oldVal) {
 					this.regPassWord = '/^'+ newVal +'$/';
 				}
+			},
+			radioResult(newVal) {
+
+			}
+		},
+		event:{
+			radioResult: val =>{
+				this.sex = val;
 			}
 		}
 	}
