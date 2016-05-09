@@ -38,9 +38,6 @@
 			fieldtext(val){
 				var reg = eval(this.reg);
 				if(!val){
-					// this.isError = true;
-					// this.no_empty = false;
-					// this.error = this.label+'不能为空';
 					return false;
 				}
 				else if(!reg.test(val)) {
