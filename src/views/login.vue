@@ -65,7 +65,7 @@
 				}
 
 				fetch.login({
-					username: this.username,
+					name: this.username,
 					password: this.password
 				}).
 				then(

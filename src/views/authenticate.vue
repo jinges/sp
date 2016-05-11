@@ -32,11 +32,16 @@
 					name: this.name,
 					captcha: this.captcha,
 					date: Date.parse(new Date())
+<<<<<<< HEAD
 				}).then(result=>{
 					if(result.status != 200) {
 						return false;
 					}
 					this.route.go({'name': 'password', params: {'name': this.name}});
+=======
+				}).then(result => {
+					console.log(result);
+>>>>>>> a590cd5dc9ef300c0e17a0f39efeecc1692c4278
 				});
 			}
 		}

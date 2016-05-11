@@ -43,12 +43,20 @@
 				}
 
 				fetch.password({
+<<<<<<< HEAD
 					name: this.name,
 					password: this.password,
 					rePassword: this.rePassword
 				}).then(result=>{
 
 				});
+=======
+					password: this.password,
+					rePassword: this.rePassword
+				}).then(
+					
+				);
+>>>>>>> a590cd5dc9ef300c0e17a0f39efeecc1692c4278
 			}
 		},
 		watch:{

@@ -78,7 +78,7 @@
 				}
 
 				fetch.regist({
-					username: this.username,
+					name: this.username,
 					password: this.password,
 					captcha: this.captcha,
 					sex: this.sex

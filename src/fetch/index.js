@@ -9,9 +9,9 @@ export default {
 	regist   : (data) => $http(HTTP+'/user/regist', data, 'post'),
 	login    : (data) => $http(HTTP+'/user/login', data, 'post'),
 	loginout : (data) => $http(HTTP+'/user/loginout', data, 'get'),
-	password : (data) => $http(HTTP+'/user/password', data, 'post'),
+	changepassword : (data) => $http(HTTP+'/user/changepassword', data, 'post'),
 	userinfo : (data) => $http(HTTP+'/user/userinfo', data, 'get'),
-	authenticate : (data) => $http(HTTP+'authenticate', data, 'post'),
+	authenticate : (data) => $http(HTTP+'/user/authenticate', data, 'post'),
 	
 	products : (data) => $http(HTTP+'productList', data, 'get'),
 	product  : (data) => $http(HTTP+'productDetail', data, 'get')
