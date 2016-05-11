@@ -43,14 +43,10 @@
 				}
 
 				fetch.password({
-					password: this.password
+					password: this.password,
+					rePassword: this.rePassword
 				}).then(
-					(res) => {
-
-					},
-					(res) => {
-						
-					}
+					
 				);
 			}
 		},

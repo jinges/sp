@@ -32,14 +32,9 @@
 					username: this.username,
 					captcha: this.captcha,
 					date: Date.parse(new Date())
-				}).then(
-					(result) => {
-
-					},
-					(result) => {
-						
-					}
-				);
+				}).then(result => {
+					console.log(result);
+				});
 			}
 		}
 	}
