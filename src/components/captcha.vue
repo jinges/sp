@@ -38,7 +38,7 @@
 			Toast
 		},
 		props:{
-			username: String,
+			name: String,
 			captcha: String,
 			isnull: Boolean,
 			purpose: String
@@ -53,13 +53,13 @@
 				codeNull: true,
 				toastShow: false,
 				toastContent: '',
-				login: this.username != null
+				login: this.name != null
 			}
 		},
 		watch:{
 			phone(newVal, oldVal){
 				if(newVal != oldVal) {
-					this.username = newVal;
+					this.name = newVal;
 				}
 			},
 			code(newVal, oldVal){
@@ -92,7 +92,7 @@
 				this.isGetCode = true;
 
 				fetch.captcha({
-					phone: this.username,
+					phone: this.name,
 					purpose: this.purpose
 				}).then(result => {
 					this.toastContent = result.data;

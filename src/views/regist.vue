@@ -92,9 +92,6 @@
 				if(newVal != oldVal) {
 					this.regPassWord = '/^'+ newVal +'$/';
 				}
-			},
-			radioResult(newVal) {
-
 			}
 		},
 		event:{

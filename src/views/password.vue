@@ -43,15 +43,12 @@
 				}
 
 				fetch.password({
-					password: this.password
-				}).then(
-					(res) => {
+					name: this.name,
+					password: this.password,
+					rePassword: this.rePassword
+				}).then(result=>{
 
-					},
-					(res) => {
-						
-					}
-				);
+				});
 			}
 		},
 		watch:{
@@ -59,6 +56,11 @@
 				if(newVal != oldVal) {
 					this.regPassWord = '/^'+ newVal +'$/';
 				}
+			}
+		},
+		route: {
+			data ({ to: { params: { name }}}) {
+			    this.name = name
 			}
 		}
 	}

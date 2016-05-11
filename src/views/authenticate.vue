@@ -1,6 +1,6 @@
 <template>
 	<form >
-		<captcha :username.sync='username' :isnull.sync="isnull" :captcha.sync='captcha'></captcha>
+		<captcha :name.sync='name' :isnull.sync="isnull" :captcha.sync='captcha'></captcha>
 		<div class="form-group">
 			<span class="button" v-touch:tap="validation">下一步</span>
 		</div>
@@ -16,30 +16,28 @@
 		},
 		data(){
 			return {
-				username: '',
+				name: '',
 				captcha: '',
 				isnull: false
 			}
 		},
 		methods:{
 			validation(){
-				if(!this.username && !this.captcha) {
+				if(!this.name && !this.captcha) {
 					this.isnull = true;
 					return false;
 				}
 
 				fetch.authenticate({
-					username: this.username,
+					name: this.name,
 					captcha: this.captcha,
 					date: Date.parse(new Date())
-				}).then(
-					(result) => {
-
-					},
-					(result) => {
-						
+				}).then(result=>{
+					if(result.status != 200) {
+						return false;
 					}
-				);
+					this.route.go({'name': 'password', params: {'name': this.name}});
+				});
 			}
 		}
 	}

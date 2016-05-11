@@ -69,12 +69,7 @@
 					password: this.password
 				}).
 				then(
-					(res) => {
-
-					},
-					(res) => {
-
-					}
+					
 				);
 				
 			}
