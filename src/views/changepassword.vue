@@ -6,6 +6,7 @@
 				label="密码"
 				reg="/^\w{6,16}$/"
 				error="6~16位数字、字母"
+				:isnull = 'isnull'
 				:value.sync="password"></field>
 		</div>
 		<div class="form-group">
@@ -14,9 +15,10 @@
 				label="确认密码"
 				:reg="regPassWord"
 				error="密码不一致"
+				:isnull = 'isnull'
 				:value.sync="rePassword"></field>
 		</div>
-		<div class="form-group">
+		<div class="form-group button-group">
 			<a v-touch:tap="midify" class="button">确定</a>
 		</div>
 	</form>
@@ -33,30 +35,24 @@
 			return {
 				password: '',
 				rePassword: '',
-				regPassWord: ''
+				regPassWord: '',
+				isnull: false
 			}
 		},
 		methods:{
 			midify(){
-				if(!this.password && !this.rePassword) {
+				if(!this.password || !this.rePassword) {
+					this.isnull = true;
 					return false;
 				}
 
-				fetch.password({
-<<<<<<< HEAD
+				fetch.changepassword({
 					name: this.name,
 					password: this.password,
 					rePassword: this.rePassword
 				}).then(result=>{
-
+					console.log(result);
 				});
-=======
-					password: this.password,
-					rePassword: this.rePassword
-				}).then(
-					
-				);
->>>>>>> a590cd5dc9ef300c0e17a0f39efeecc1692c4278
 			}
 		},
 		watch:{

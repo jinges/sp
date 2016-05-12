@@ -40,10 +40,10 @@ module.exports = function (router){
 			title: '验证身份',
 			component: require('./views/authenticate.vue')
 		},
-		'/password/:name': {
+		'/changepassword/:name': {
 			title: '修改密码',
-			name: 'password',
-			component: require('./views/password.vue')
+			name: 'changepassword',
+			component: require('./views/changepassword.vue')
 		}
 	})
 }
