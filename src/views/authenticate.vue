@@ -36,7 +36,7 @@
 					if(result.status != 200) {
 						return false;
 					}
-					this.$router.go({'name': 'changepassword', params: {'name': this.name}});
+					this.$router.go({'name': 'password', params: {'name': this.name}});
 				})
 			}
 		}

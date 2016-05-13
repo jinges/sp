@@ -26,6 +26,7 @@ module.exports = function (router){
 		},
 		'/center': {
 			title: '用户中心',
+			name: 'center',
 			component: require('./views/center.vue')
 		},
 		'/login': {
@@ -40,10 +41,10 @@ module.exports = function (router){
 			title: '验证身份',
 			component: require('./views/authenticate.vue')
 		},
-		'/changepassword/:name': {
+		'/password/:name': {
 			title: '修改密码',
-			name: 'changepassword',
-			component: require('./views/changepassword.vue')
+			name: 'password',
+			component: require('./views/password.vue')
 		}
 	})
 }

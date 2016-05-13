@@ -3,7 +3,7 @@
 		width: 100%;
 		height: 100%;
 		position: fixed;
-		background: url('../assets/images/header.jpg');
+		background: #c8c8c8;//url('../assets/images/header.jpg');
 		background-size: cover;
 	}
 </style>
@@ -68,10 +68,11 @@
 					name: this.username,
 					password: this.password
 				}).
-				then(
-					
-				);
-				
+				then(result=>{
+					if(result.status == 200) {
+						this.$router.go({'name': 'center'});
+					}
+				})
 			}
 		}
 	}

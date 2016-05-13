@@ -9,7 +9,7 @@ export default {
 	regist   : (data) => $http(HTTP+'/user/regist', data, 'post'),
 	login    : (data) => $http(HTTP+'/user/login', data, 'post'),
 	loginout : (data) => $http(HTTP+'/user/loginout', data, 'get'),
-	changepassword : (data) => $http(HTTP+'/user/changepassword', data, 'post'),
+	password : (data) => $http(HTTP+'/user/password', data, 'post'),
 	userinfo : (data) => $http(HTTP+'/user/userinfo', data, 'get'),
 	authenticate : (data) => $http(HTTP+'/user/authenticate', data, 'post'),
 	

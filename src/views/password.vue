@@ -46,7 +46,7 @@
 					return false;
 				}
 
-				fetch.changepassword({
+				fetch.password({
 					name: this.name,
 					password: this.password,
 					rePassword: this.rePassword
