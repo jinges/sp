@@ -3,7 +3,7 @@
 </style>
 <template>
 	<form>
-		<captcha :username.sync='username' :isnull='isnull' :purpose='purpose' :captcha.sync='captcha'></captcha>
+		<captcha :name.sync='name' :isnull='isnull' :purpose='purpose' :captcha.sync='captcha'></captcha>
 		<div class="form-group">
 			<field 
 				type="password" 
@@ -40,28 +40,33 @@
 			<a class="button" v-touch:tap="regist">注册</a>
 		</div>
 	</form>
+	<toast :text="toastContent" :toastshow.sync="toastShow"></toast>
 </template>
 <script type="text/javascript">
 	import Radio from '../components/radio.vue'
 	import Field from '../components/field.vue'
 	import Captcha from '../components/captcha.vue'
+	import Toast from '../components/toast.vue'
 	import fetch from '../fetch/index'
 
 	export default {
 		components:{
 			Radio,
 			Field,
+			Toast,
 			Captcha
 		},
 		data(){
 			return {
-				username: '',
+				name: '',
 				captcha: '',
 				password: '',
 				repassword: '',
 				regPassWord: '',
 				purpose: 'regist',
 				sex: 1,
+				toastShow: false,
+				toastContent: '',
 				isnull: false
 			}
 		},
@@ -72,18 +77,22 @@
 		},
 		methods:{
 			regist(){
-				if(!this.username || !this.captcha || !this.password || !this.repassword) {
+				if(!this.name || !this.captcha || !this.password || !this.repassword) {
 					this.isnull = true;
 					return false;
 				}
 
 				fetch.regist({
-					name: this.username,
+					name: this.name,
 					password: this.password,
 					captcha: this.captcha,
 					sex: this.sex
 				}).then(result=>{
-					console.log(result);
+					if(result.status != 200) {
+						this.toastContent = result.data;
+						this.toastShow = true;
+						return false;
+					}
 				})
 			}
 		},

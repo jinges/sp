@@ -92,7 +92,7 @@
 				this.isGetCode = true;
 
 				fetch.captcha({
-					phone: this.name,
+					name: this.name,
 					purpose: this.purpose
 				}).then(result => {
 					this.toastContent = result.data;
